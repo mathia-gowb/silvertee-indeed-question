@@ -16,7 +16,7 @@ function ButtonComponent(props) {
     }
 
     return (
-    <button onClick={handleClick} ref={button}>{colorIndex} ButtonComponent</button>
+    <button onClick={handleClick} ref={button}> ButtonComponent </button>
     )
 }
 
