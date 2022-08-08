@@ -2,23 +2,22 @@ import {useState,useRef} from 'react'
 
 function ButtonComponent(props) {
     const {colors} = props;
-    const [colorIndex,setColorIndex]=useState("");
+    const [colorIndex,setColorIndex]=useState(0);
     const button = useRef(null);
 
-    function handleClick({target}){
+    function handleClick(){
         //check if colors array exists
         if(colors){
-            
-            button.current.style.backgroundColor =
+          //manage color index boundaries
+          colorIndex>=colors.length-1?setColorIndex(0):setColorIndex(prev=>prev+1);
+          //change color of button
+          button.current.style.backgroundColor =colors[colorIndex];
         }
-
     }
 
     return (
-    <button onClick={handleClick} ref={button}>ButtonComponent</button>
+    <button onClick={handleClick} ref={button}>{colorIndex} ButtonComponent</button>
     )
 }
-const buttonStyle ={
-    padding:'8px 15px'
-}
+
 export default ButtonComponent
